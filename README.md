@@ -43,4 +43,4 @@ composer test:unit
 composer test
 ```
 
-**Skeleton PHP** was created by **[Filip Krzyżanowski](https://linkedin.com/in/fkrzski)** under the **[MIT license](https://opensource.org/licenses/MIT)**.
+**PHP Package Skeleton** was created by **[Filip Krzyżanowski](https://linkedin.com/in/fkrzski)** under the **[MIT license](https://opensource.org/licenses/MIT)**.
