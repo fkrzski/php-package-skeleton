@@ -1,5 +1,9 @@
 <p align="center">
-    <img src="./art/banner.png" alt="Fkrzski PHP Package Skeleton"/>
+<img src="./art/banner.png" alt="Fkrzski PHP Package Skeleton"/>
+<img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/fkrzski/php-package-skeleton/tests.yml?branch=master&style=for-the-badge&label=TESTS">
+<img alt="Packagist Downloads" src="https://img.shields.io/packagist/dt/fkrzski/php-package-skeleton?style=for-the-badge">
+<img alt="Packagist Version" src="https://img.shields.io/packagist/v/fkrzski/php-package-skeleton?style=for-the-badge">
+<img alt="Packagist License" src="https://img.shields.io/packagist/l/fkrzski/php-package-skeleton?style=for-the-badge">
 </p>
 
 ------
