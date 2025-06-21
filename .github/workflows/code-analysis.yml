@@ -1,6 +1,15 @@
 name: Code analysis
 
-on: ['push', 'pull_request']
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [
+      "master"
+    ]
+  push:
+    branches: [
+      "master"
+    ]
 
 jobs:
   changes:
