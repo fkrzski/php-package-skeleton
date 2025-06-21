@@ -3,8 +3,33 @@ name: Tests
 on: ['push', 'pull_request']
 
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+
+    outputs:
+      src: ${{ steps.filter.outputs.src }}
+      composer: ${{ steps.filter.outputs.composer }}
+
+    name: Check changes
+
+    steps:
+
+    - uses: dorny/paths-filter@v3
+      id: filter
+      with:
+        filters: |
+          src:
+            - 'src/**'
+          composer:
+            - 'composer.json'
+          phpunit:
+            - 'phpunit.xml.dist'
+
   ci:
     runs-on: ${{ matrix.os }}
+    if: ${{ needs.changes.outputs.src == 'true' || needs.changes.outputs.composer == 'true' }}
     strategy:
       fail-fast: true
       matrix:

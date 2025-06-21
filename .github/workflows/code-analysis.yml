@@ -3,9 +3,37 @@ name: Code analysis
 on: ['push', 'pull_request']
 
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+
+    outputs:
+      src: ${{ steps.filter.outputs.src }}
+      composer: ${{ steps.filter.outputs.composer }}
+
+    name: Check changes
+
+    steps:
+
+    - uses: dorny/paths-filter@v3
+      id: filter
+      with:
+        filters: |
+          src:
+            - 'src/**'
+          composer:
+            - 'composer.json'
+          pint:
+            - 'pint.json'
+          phpstan:
+            - 'phpstan.neon.dist'
+          rector:
+            - 'rector.php'
+
   ci:
     runs-on: ${{ matrix.os }}
-
+    if: ${{ needs.changes.outputs.src == 'true' || needs.changes.outputs.composer == 'true' || needs.changes.outputs.pint == 'true' || needs.changes.outputs.phpstan == 'true' || needs.changes.outputs.rector == 'true' }}
     strategy:
       fail-fast: true
       matrix:
@@ -47,3 +75,9 @@ jobs:
 
     - name: Run type checks
       run: composer test:types
+
+    - name: Run refactor checks
+      run: composer test:refactor
+
+    - name: Run type coverage tests
+      run: composer test:type-coverage
