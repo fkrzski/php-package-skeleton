@@ -1,4 +1,4 @@
-<p align="center">
+<p style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center;">
 <img src="./art/banner.png" alt="Fkrzski PHP Package Skeleton"/>
 <img alt="GitHub branch check runs" src="https://img.shields.io/github/check-runs/fkrzski/php-package-skeleton/master?style=for-the-badge">
 <img alt="Packagist Downloads" src="https://img.shields.io/packagist/dt/fkrzski/php-package-skeleton?style=for-the-badge">
@@ -24,6 +24,8 @@ This package provides a wonderful **PHP Package Skeleton** to start building you
 ## Usage
 
 ⚡️ Create your package using [Composer](https://getcomposer.org):
+
+> Be careful! Creating repository in this way not create all directories and files, so you need to create them manually after running this command!
 
 ```bash
 composer create-project fkrzski/php-package-skeleton PackageName

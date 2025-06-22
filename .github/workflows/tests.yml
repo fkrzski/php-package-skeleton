@@ -34,6 +34,7 @@ jobs:
         filters: |
           src:
             - 'src/**'
+            - 'tests/**'
           composer:
             - 'composer.json'
           phpunit:
@@ -41,7 +42,8 @@ jobs:
 
   ci:
     runs-on: ${{ matrix.os }}
-    if: ${{ needs.changes.outputs.src == 'true' || needs.changes.outputs.composer == 'true' }}
+    needs: changes
+    if: ${{ needs.changes.outputs.src == 'true' || needs.changes.outputs.composer == 'true' || needs.changes.outputs.phpunit == 'true' }}
     strategy:
       fail-fast: true
       matrix:

@@ -34,6 +34,7 @@ jobs:
         filters: |
           src:
             - 'src/**'
+            - 'tests/**'
           composer:
             - 'composer.json'
           pint:
@@ -45,6 +46,7 @@ jobs:
 
   ci:
     runs-on: ${{ matrix.os }}
+    needs: changes
     if: ${{ needs.changes.outputs.src == 'true' || needs.changes.outputs.composer == 'true' || needs.changes.outputs.pint == 'true' || needs.changes.outputs.phpstan == 'true' || needs.changes.outputs.rector == 'true' }}
     strategy:
       fail-fast: true
