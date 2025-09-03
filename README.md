@@ -17,7 +17,7 @@ This package provides a wonderful **PHP Package Skeleton** to start building you
 - **Rector** for refactoring
 - **PHPStan** for static analysis
 - **PEST** for unit testing
-- **PEST plugin** for type coverage checks
+- **PEST plugins** for type coverage and profanity checks
 - **GitHub Actions** for CI with conditional checks for less GH Actions minutes usage
 - **.gitattributes** for ignoring unnecessary files while creating a project or installing via dependencies
 
@@ -42,7 +42,7 @@ composer lint
 ✅ Run refactors using **Rector**
 
 ```bash
-composer rector
+composer refactor
 ```
 
 🧪 Run type coverage checks using **PEST plugin**:
@@ -51,16 +51,32 @@ composer rector
 composer test:type-coverage
 ```
 
-⚗️ Run static analysis using **PHPStan**:
+🧹 Run code formatting **Pint**:
 
 ```bash
-composer test:types
+composer test:lint
 ```
 
 ✅ Run unit tests with code coverage using **PEST**
 
 ```bash
 composer test:unit
+```
+
+⚗️ Run static analysis using **PHPStan**:
+
+```bash
+composer test:types
+```
+
+🧪 Run profanity checks using **PEST Profanity plugin**:
+```bash
+composer test:profanity
+```
+
+✅ Run refactor checks using **Rector**:
+```bash
+composer test:refactor
 ```
 
 🚀 Run the entire test suite:
