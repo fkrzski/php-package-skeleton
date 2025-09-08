@@ -1,0 +1,93 @@
+yamlname: Bug Report
+description: Report a bug to help us improve
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report this bug! 🐛
+
+        Please fill out the information below to help us understand and fix the issue.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: Clearly describe what happened and what you expected to happen
+      placeholder: |
+        Example:
+        - What I did: Called Example::foo()
+        - What I expected: 'bar'
+        - What happened: Got an RuntimeException
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Provide step-by-step instructions to reproduce the issue
+      placeholder: |
+        1. Call Example::foo()
+        2. Observe the result
+    validations:
+      required: true
+
+  - type: input
+    id: package-version
+    attributes:
+      label: Package Version
+      description: What version of this package are you using?
+      placeholder: "1.0.0, dev-main, etc."
+    validations:
+      required: true
+
+  - type: input
+    id: php-version
+    attributes:
+      label: PHP Version
+      description: What version of PHP are you running?
+      placeholder: "8.3, 8.4, etc."
+    validations:
+      required: true
+
+  - type: textarea
+    id: code-sample
+    attributes:
+      label: Code Sample
+      description: Provide a minimal code example that demonstrates the issue
+      render: php
+      placeholder: |
+        <?php
+        // Your code example here
+        $foo = Example::foo();
+        var_dump($foo); // Shows unexpected result
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error Output
+      description: Include any error messages, stack traces, or relevant log output
+      render: shell
+      placeholder: Paste any error messages or logs here
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Add any other context, screenshots, or information that might help
+      placeholder: Any additional information that might be relevant
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      description: Please confirm the following
+      options:
+        - label: I have searched existing issues to ensure this is not a duplicate
+          required: true
+        - label: I have provided a clear description and steps to reproduce
+          required: true
+        - label: I have included relevant code samples and error messages
+          required: true
