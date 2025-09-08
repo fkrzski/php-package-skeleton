@@ -89,8 +89,8 @@ jobs:
     - name: Run profanity checks
       run: composer test:profanity
 
-    - name: Run coding style checks
-      run: composer test:format
+    - name: Run code linting checks
+      run: composer test:lint
 
     - name: Run refactor checks
       run: composer test:refactor
