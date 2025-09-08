@@ -32,6 +32,8 @@ jobs:
       id: filter
       with:
         filters: |
+          github:
+            - '.github/**'
           src:
             - 'src/**'
             - 'tests/**'
@@ -47,7 +49,7 @@ jobs:
   ci:
     runs-on: ${{ matrix.os }}
     needs: changes
-    if: ${{ needs.changes.outputs.src == 'true' || needs.changes.outputs.composer == 'true' || needs.changes.outputs.pint == 'true' || needs.changes.outputs.phpstan == 'true' || needs.changes.outputs.rector == 'true' }}
+    if: ${{ needs.changes.outputs.github == 'true' || needs.changes.outputs.src == 'true' || needs.changes.outputs.composer == 'true' || needs.changes.outputs.pint == 'true' || needs.changes.outputs.phpstan == 'true' || needs.changes.outputs.rector == 'true' }}
     strategy:
       fail-fast: true
       matrix:
@@ -84,14 +86,17 @@ jobs:
     - name: Install Composer dependencies
       run: composer update --${{ matrix.dependency-version }} --no-interaction --prefer-dist
 
+    - name: Run profanity checks
+      run: composer test:profanity
+
     - name: Run coding style checks
       run: composer test:lint
 
-    - name: Run type checks
-      run: composer test:types
-
     - name: Run refactor checks
       run: composer test:refactor
+
+    - name: Run type checks
+      run: composer test:types
 
     - name: Run type coverage tests
       run: composer test:type-coverage
