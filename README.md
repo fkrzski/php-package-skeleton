@@ -71,6 +71,12 @@ The skeleton includes several Composer scripts to streamline your development wo
 #### Code Quality & Formatting
 
 ```bash
+# Run profanity checks
+composer test:profanity
+
+# Run static analysis with PHPStan
+composer analyse
+
 # Format code with Laravel Pint
 composer lint
 
@@ -83,30 +89,21 @@ composer refactor
 # Check refactor suggestions (dry-run)
 composer test:refactor
 
-# Fix code quality issues automatically
-composer code-quality
+# Check type coverage (100% required)
+composer test:type-coverage
 ```
 
-#### Static Analysis & Testing
+#### Testing
 
 ```bash
-# Run static analysis with PHPStan
-composer analyse
+# Check PHP syntax
+composer test:syntax
 
 # Run unit tests with coverage
 composer test:unit
 
 # Run mutation testing
 composer test:unit:mutation
-
-# Check type coverage (100% required)
-composer test:type-coverage
-
-# Run profanity checks
-composer test:profanity
-
-# Check PHP syntax
-composer test:syntax
 ```
 
 #### Complete Test Suite
