@@ -42,18 +42,22 @@
     "scripts": {
         "lint": "pint",
         "refactor": "rector",
-        "test:type-coverage": "pest --type-coverage --exactly=100 --compact",
         "test:lint": "pint --test",
-        "test:unit": "pest --coverage --exactly=100",
-        "test:types": "phpstan",
         "test:profanity": "pest --profanity --compact",
         "test:refactor": "rector --dry-run",
+        "test:syntax": "find . -path ./vendor -prune -o -type f -name \\\"*.php\\\" -print | xargs -P 2 -n 1 php -l",
+        "test:types": "phpstan",
+        "test:type-coverage": "pest --type-coverage --exactly=100 --compact",
+        "test:unit": "pest --parallel --coverage --exactly=100",
+        "test:unit:mutation": "pest --parallel --mutate --exactly=100",
         "test": [
+            "@test:profanity",
+            "@test:syntax",
             "@test:lint",
-            "@test:type-coverage",
-            "@test:unit",
+            "@test:refactor",
             "@test:types",
-            "@test:refactor"
+            "@test:type-coverage",
+            "@test:unit:mutation"
         ],
         "code-quality": [
             "@lint",

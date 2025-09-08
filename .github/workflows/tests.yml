@@ -32,6 +32,8 @@ jobs:
       id: filter
       with:
         filters: |
+          github:
+            - '.github/**'
           src:
             - 'src/**'
             - 'tests/**'
@@ -43,7 +45,7 @@ jobs:
   ci:
     runs-on: ${{ matrix.os }}
     needs: changes
-    if: ${{ needs.changes.outputs.src == 'true' || needs.changes.outputs.composer == 'true' || needs.changes.outputs.phpunit == 'true' }}
+    if: ${{ needs.changes.outputs.github == 'true' || needs.changes.outputs.src == 'true' || needs.changes.outputs.composer == 'true' || needs.changes.outputs.phpunit == 'true' }}
     strategy:
       fail-fast: true
       matrix:
@@ -80,5 +82,8 @@ jobs:
     - name: Install Composer dependencies
       run: composer update --${{ matrix.dependency-version }} --no-interaction --prefer-dist
 
+    - name: Check syntax
+      run: composer test:syntax
+
     - name: Run tests
-      run: php ./vendor/bin/pest
+      run: composer test:unit:mutation
