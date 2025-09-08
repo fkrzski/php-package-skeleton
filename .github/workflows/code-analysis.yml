@@ -90,13 +90,13 @@ jobs:
       run: composer test:profanity
 
     - name: Run coding style checks
-      run: composer test:lint
+      run: composer test:format
 
     - name: Run refactor checks
       run: composer test:refactor
 
     - name: Run type checks
-      run: composer test:types
+      run: composer analyse
 
     - name: Run type coverage tests
       run: composer test:type-coverage

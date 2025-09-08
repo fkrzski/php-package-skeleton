@@ -66,7 +66,7 @@ composer test:unit
 ⚗️ Run static analysis using **PHPStan**:
 
 ```bash
-composer test:types
+composer analyse
 ```
 
 🧪 Run profanity checks using **PEST Profanity plugin**:

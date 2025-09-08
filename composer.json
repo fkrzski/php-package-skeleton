@@ -41,12 +41,12 @@
     },
     "scripts": {
         "lint": "pint",
+        "analyse": "phpstan",
         "refactor": "rector",
         "test:lint": "pint --test",
         "test:profanity": "pest --profanity --compact",
         "test:refactor": "rector --dry-run",
         "test:syntax": "find . -path ./vendor -prune -o -type f -name \\\"*.php\\\" -print | xargs -P 2 -n 1 php -l",
-        "test:types": "phpstan",
         "test:type-coverage": "pest --type-coverage --exactly=100 --compact",
         "test:unit": "pest --parallel --coverage --exactly=100",
         "test:unit:mutation": "pest --parallel --mutate --exactly=100",
@@ -55,7 +55,7 @@
             "@test:syntax",
             "@test:lint",
             "@test:refactor",
-            "@test:types",
+            "@analyse",
             "@test:type-coverage",
             "@test:unit:mutation"
         ],
